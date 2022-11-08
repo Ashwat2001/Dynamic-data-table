@@ -1,0 +1,33 @@
+
+<div class="table">
+  <h1><u>Dynamic API data table</u></h1>
+<table>
+  <thead>
+    <th>Designer Id</th>
+    <th>Designer Name</th>
+    <th>Country #</th>
+    <th>Mobile</th>
+    <th>Location</th>
+  </thead>
+  <tbody>
+    <tr
+      *ngFor="
+        let item of list
+          | paginate
+            : {
+                itemsPerPage: itemsPerPage,
+                currentPage: page,
+                totalItems: totalItems
+              }
+      "
+    >
+      <td>{{ item.designer.designer_id }}</td>
+      <td>{{ item.designer.first_name }}</td>
+      <td>{{ item.designer.country_code }}</td>
+      <td>{{ item.designer.mobile }}</td>
+      <td>{{ item.designer.location }}</td>
+    </tr>
+  </tbody>
+</table>
+<pagination-controls (pageChange)="gty((page = $event))"></pagination-controls>
+</div>
